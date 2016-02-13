@@ -1,0 +1,27 @@
+gamerule
+/gamerule commandBlockOutput true/false
+(False yaparsanýz komut bloklarýndan çýkan yazýyý saklar.)
+
+/gamerule doFireTick true/false
+(False yaparsanýz ateþin yayýlmasýný önler.)
+
+/gamerule doMobLoot true/false
+(False yaparsanýz moblardan asla eþya çýkmaz.)
+
+/gamerule doMobSpawning true/false
+(False yaparsanýz Easy-Medium-Hard olsa da mob spawn olmaz. Sadece spawnerlardan ve yumurtalardan spawn olurlar.)
+
+/gamerule doTileDrops true/false
+(False yaparsanýz blok kýrdýðýnýzda blok düþmez yok olur.)
+
+/gamerule keepInventory true/false
+(True yaparsanýz öldüðünüzde eþyalarýnýz gitmez. Adv. maplerde çok kullanýlýr.)
+
+/gamerule mobGriefing ture/false
+(False yaparsanýz creeperlar blok patlatamaz, zombiler kapý kýramaz, endermanler blok alamaz, witherlar ve ghastlar blok patlatamaz.)
+
+/gamerule naturalRegeneration true/false
+(Bu bir hardcore modudur. True yaparsanýz açlýðýnýz dolu olsa bile canýnýz dolmaz, sadece altýn elma ve çeþitli can iksirleri ile canýnýzý doldurabilirsiniz.)
+
+/gamerule doDaylightCycle true/false
+(Harita yapýmlarýnda en çok kullanýlan komuttur. False yaparsanýz zamaný durdurursunuz. True yaparsanýz zaman kaldýðý yerden devam eder.)
