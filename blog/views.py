@@ -1,5 +1,5 @@
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from .forms import PostForm
@@ -15,28 +15,28 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
-            post.yayinlanma_tarihi = timezone.now()
+            post.yazar = request.user
+            
             post.save()
             return redirect('blog.views.post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})  
 
-
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.yazar = request.user
             post.yayinlanma_tarihi = timezone.now()
             post.save()
             return redirect('blog.views.post_detail', pk=post.pk)
@@ -44,18 +44,18 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})    
 
-
+@login_required
 def post_draft_list(request):
     posts = Post.objects.filter(yayinlanma_tarihi__isnull=True).order_by('yaratilis_tarihi')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})   
 
-
+@login_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('blog.views.post_detail', pk=pk)
 
-
+@login_required
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
